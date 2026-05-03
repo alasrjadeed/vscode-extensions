@@ -1,0 +1,21 @@
+# Visual Studio Code Extension
+
+# Node modules
+node_modules/
+
+# Output directories
+out/
+dist/
+
+# VSIX package files
+*.vsix
+
+# macOS metadata
+.DS_Store
+
+# Log files
+*.log
+
+# Environment variables
+.env
+.env.local
