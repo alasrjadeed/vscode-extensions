@@ -1,0 +1,58 @@
+{
+  "React Functional Component": {
+    "prefix": "ts-react-component",
+    "body": [
+      "import React, { useState } from 'react';",
+      "",
+      "interface Props {",
+      "  title: string;",
+      "}",
+      "",
+      "export const ${1:MyComponent}: React.FC<Props> = ({ title }) => {",
+      "  const [state, setState] = useState<string>('');",
+      "",
+      "  return (",
+      "    <div className=\"component\">",
+      "      <h1>{title}</h1>",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "Create a React functional component with TypeScript"
+  },
+  "Node.js Express Server": {
+    "prefix": "ts-node-server",
+    "body": [
+      "import express from 'express';",
+      "",
+      "const app = express();",
+      "const PORT = process.env.PORT || 3000;",
+      "",
+      "app.use(express.json());",
+      "",
+      "app.get('/api/health', (req, res) => {",
+      "  res.json({ status: 'OK' });",
+      "});",
+      "",
+      "app.listen(PORT, () => {",
+      "  console.log(`Server running on port ${PORT}`);",
+      "});"
+    ],
+    "description": "Create a basic Node.js Express server"
+  },
+  "API Route Handler": {
+    "prefix": "ts-api-route",
+    "body": [
+      "app.post('/api/${1:data}', async (req, res) => {",
+      "  try {",
+      "    const { data } = req.body;",
+      "    const result = await processData(data);",
+      "    res.json({ success: true, result });",
+      "  } catch (error) {",
+      "    res.status(500).json({ success: false, error: error.message });",
+      "  }",
+      "});"
+    ],
+    "description": "Create an API route handler"
+  }
+}

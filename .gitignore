@@ -19,3 +19,9 @@ dist/
 # Environment variables
 .env
 .env.local
+
+# VS Code test
+.vscode-test/
+
+# Test results
+test-results/

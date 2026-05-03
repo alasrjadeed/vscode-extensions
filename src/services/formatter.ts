@@ -1,13 +1,16 @@
-class CodeFormatter {
-    format(input: string): string {
-        // Implement formatting logic here
-        return input; // Placeholder implementation
-    }
+import * as vscode from 'vscode';
+import { logger } from '../utils/logger';
 
-    formatSelection(input: string, selection: { start: number; end: number }): string {
-        // Implement selection formatting logic here
-        return input.substring(0, selection.start) + this.format(input.substring(selection.start, selection.end)) + input.substring(selection.end);
+export class CodeFormatter {
+    async format(): Promise<void> {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            throw new Error('No active editor');
+        }
+
+        const language = editor.document.languageId;
+        logger.info(`Formatting ${language} code`);
+
+        await vscode.commands.executeCommand('editor.action.formatDocument');
     }
 }
-
-export default CodeFormatter;

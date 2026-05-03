@@ -1,1 +1,131 @@
-{ "name": "vscode-ai-services-extension", "version": "0.0.1", "description": "A VS Code extension that leverages AI services.", "main": "out/extension.js", "scripts": { "vscode:prepublish": "tsc -p ./", "lint": "eslint .", "test": "node ./out/test/runTest.js" }, "engines": { "vscode": ^"^1.40.0" }, "repository": { "type": "git", "url": "https://github.com/alasrjadeed/vscode-extensions.git" }, "devDependencies": { "typescript": "^4.0.0", "eslint": "^7.0.0", "mocha": "^8.0.0" } }
+{
+  "name": "vscode-ai-services-extension",
+  "displayName": "VS Code AI Services & Dev Tools",
+  "description": "AI-powered code analysis, linting, formatting, snippets, automation, and testing",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Formatters",
+    "Snippets",
+    "Testing",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:extension.aiServices",
+    "onCommand:extension.formatCode",
+    "onCommand:extension.lintCode",
+    "onCommand:extension.insertSnippet",
+    "onCommand:extension.runTests",
+    "onCommand:extension.deployPipeline",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:python",
+    "onLanguage:jsx",
+    "onLanguage:tsx"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.aiServices",
+        "title": "AI Services: Analyze Code"
+      },
+      {
+        "command": "extension.formatCode",
+        "title": "Format: Apply Code Formatting"
+      },
+      {
+        "command": "extension.lintCode",
+        "title": "Lint: Check Code Quality"
+      },
+      {
+        "command": "extension.insertSnippet",
+        "title": "Insert: Custom Code Snippet"
+      },
+      {
+        "command": "extension.runTests",
+        "title": "Test: Run Validation Tests"
+      },
+      {
+        "command": "extension.deployPipeline",
+        "title": "Deploy: Trigger Build Pipeline"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.formatCode",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f"
+      },
+      {
+        "command": "extension.lintCode",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/typescript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python.json"
+      }
+    ],
+    "configuration": {
+      "title": "AI Services Extension",
+      "properties": {
+        "aiServices.enableAI": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable AI-powered code analysis"
+        },
+        "aiServices.lintingEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable code linting"
+        },
+        "aiServices.autoFormat": {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-format on save"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "node ./out/test/runTest.js",
+    "lint": "eslint src/**/*.ts",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alasrjadeed/vscode-extensions.git"
+  }
+}

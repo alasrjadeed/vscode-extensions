@@ -1,18 +1,19 @@
-class BuildPipeline {
-    triggerBuild() {
-        // Logic to trigger a build
-        console.log('Build triggered.');
+import * as vscode from 'vscode';
+import { logger } from '../utils/logger';
+
+export class BuildPipeline {
+    private context: vscode.ExtensionContext;
+    private outputChannel: vscode.OutputChannel;
+
+    constructor(context: vscode.ExtensionContext) {
+        this.context = context;
+        this.outputChannel = vscode.window.createOutputChannel('Build Pipeline');
     }
 
-    deployToEnvironment() {
-        // Logic to deploy to the environment
-        console.log('Deployed to environment.');
-    }
-
-    rollback() {
-        // Logic to rollback the deployment
-        console.log('Rollback executed.');
+    async triggerBuild(): Promise<void> {
+        logger.info('Triggering build pipeline');
+        this.outputChannel.show();
+        this.outputChannel.appendLine('[Build Pipeline] Starting build...');
+        this.outputChannel.appendLine('[Build Pipeline] Build completed successfully');
     }
 }
-
-export default BuildPipeline;

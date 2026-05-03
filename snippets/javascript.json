@@ -1,0 +1,35 @@
+{
+  "React Functional Component": {
+    "prefix": "js-react-component",
+    "body": [
+      "import React, { useState } from 'react';",
+      "",
+      "export const ${1:MyComponent} = ({ title }) => {",
+      "  const [state, setState] = useState('');",
+      "",
+      "  return (",
+      "    <div className=\"component\">",
+      "      <h1>{title}</h1>",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "Create a React functional component"
+  },
+  "Express Server": {
+    "prefix": "js-node-server",
+    "body": [
+      "const express = require('express');",
+      "",
+      "const app = express();",
+      "const PORT = process.env.PORT || 3000;",
+      "",
+      "app.use(express.json());",
+      "",
+      "app.listen(PORT, () => {",
+      "  console.log(`Server running on port ${PORT}`);",
+      "});"
+    ],
+    "description": "Create a basic Express server"
+  }
+}

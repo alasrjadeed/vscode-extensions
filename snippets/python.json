@@ -1,0 +1,51 @@
+{
+  "Django Model": {
+    "prefix": "py-django-model",
+    "body": [
+      "from django.db import models",
+      "",
+      "class ${1:MyModel}(models.Model):",
+      "    name = models.CharField(max_length=100)",
+      "    description = models.TextField(blank=True)",
+      "    created_at = models.DateTimeField(auto_now_add=True)",
+      "",
+      "    class Meta:",
+      "        ordering = ['-created_at']",
+      "",
+      "    def __str__(self):",
+      "        return self.name"
+    ],
+    "description": "Create a Django model"
+  },
+  "FastAPI Route": {
+    "prefix": "py-fastapi-route",
+    "body": [
+      "from fastapi import FastAPI",
+      "",
+      "app = FastAPI()",
+      "",
+      "@app.post('/${1:items}/')",
+      "async def create_item(name: str):",
+      "    return {'status': 'success', 'name': name}"
+    ],
+    "description": "Create a FastAPI route"
+  },
+  "Python Unittest": {
+    "prefix": "py-unittest",
+    "body": [
+      "import unittest",
+      "",
+      "class Test${1:MyFunction}(unittest.TestCase):",
+      "    def setUp(self):",
+      "        self.data = []",
+      "",
+      "    def test_success(self):",
+      "        result = ${2:my_function}(self.data)",
+      "        self.assertTrue(result)",
+      "",
+      "if __name__ == '__main__':",
+      "    unittest.main()"
+    ],
+    "description": "Create a Python unittest class"
+  }
+}
